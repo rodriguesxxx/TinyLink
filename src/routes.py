@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect
 import json
 
-from controllers.encurt_controller import EncurtUrlController
+from controllers.shortener_controller import ShortenerUrlController as shortController
 
 app = Flask(__name__)
 
@@ -9,10 +9,13 @@ app = Flask(__name__)
 def index():
     return "API para encurtamento de url"
 
-@app.route('/receive', methods=['POST', ])
-def receiveUrl():
-    pass
+@app.route('/shortener', methods=['POST', ])
+def shortenerUrl():
+    raw_data = request.data.decode('utf-8')
+    json_data = json.loads(raw_data)
+    urlShortened = shortController.shortener(json_data["url"])
+    return urlShortened
+    
 
-@app.route('/code')
-def returnUrlEncurted():
-    return str(EncurtUrlController.encurt(0))
+
+

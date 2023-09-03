@@ -1,16 +1,16 @@
-from random import randint 
+from random import randint
+from repository.link_repository import LinkRepository
 
-class Encurt:
+class ShortenerService:
     
     def __init__(self, url):
         self.url = url
 
-    def encurtUrl(self):
+    def shortenerUrl(self):
         return self.__generateCode()
    
     def __generateCode(self):
         code = randint(111111, 999999)
-        print(code)
         return code
    
     def __validCode(self):
