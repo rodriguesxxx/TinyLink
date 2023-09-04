@@ -10,11 +10,13 @@ class LinkRepository:
 
     def save(self, link):
         # try:
-            query = f"INSERT INTO links (url, code) VALUES('{link.getUrl()}', '{link.getCode()}')"
+            # query = f"INSERT INTO links (url, code) VALUES('{link.getUrl()}', '{link.getCode()}')"
+            query = f"INSERT INTO links (url, code) VALUES('{link.getUrl()}', {link.getCode()})"
+
             self.cursor.execute(query)
             # return True
         
-        # except BaseException:
+        # except Exception:
         #     return False
         
     def findAll(self):
@@ -28,7 +30,7 @@ class LinkRepository:
         
     def findByCode(self, code):
         try:
-            query = f"SELECT * FROM links WHERE code={code}"
+            query = f"SELECT url FROM links WHERE code={code}"
             self.cursor.execute(query)
             return self.cursor.fetchone()
         

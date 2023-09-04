@@ -13,3 +13,9 @@ class ShortenerUrlController:
     def getLinks():
         short =  ShortenerService("22")
         return str(short.listLinks())
+    
+    @staticmethod
+    def getUrlByCode(code):
+        short =  ShortenerService("22")
+
+        return str(short.getUrlbyCode(code))

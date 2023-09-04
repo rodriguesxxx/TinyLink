@@ -11,10 +11,13 @@ class ShortenerService:
     def listLinks(self):
         return self.linkRepository.findAll()
     
+    def getUrlbyCode(self, code):
+        return self.linkRepository.findByCode(code)
+    
     def shortenerUrl(self):
          code = self.__generateCode()
          link = Link(self.url, code)
-         print(self.linkRepository.save(link))
+         self.linkRepository.save(link)
         # try:
         #     code = self.__generateCode()
         #     link = Link(self.url, code)
