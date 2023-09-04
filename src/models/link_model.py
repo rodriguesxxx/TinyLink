@@ -1,7 +1,7 @@
 class Link:
     def __init__(self, url, code):
-        self.setUrl(url)
-        self.setCode(code)
+        self.__url = url
+        self.__code = code
     
     def getUrl(self):
         return self.__url

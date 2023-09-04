@@ -9,6 +9,10 @@ app = Flask(__name__)
 def index():
     return "API para encurtamento de url"
 
+@app.route('/links')
+def links():
+    return shortController().getLinks()
+
 @app.route('/shortener', methods=['POST', ])
 def shortenerUrl():
     raw_data = request.data.decode('utf-8')
