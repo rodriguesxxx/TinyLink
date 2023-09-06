@@ -1,2 +1,2 @@
 # TinyLink
-A simple and fast link shortener api.
+A simple and fast link shortener seila
