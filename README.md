@@ -16,7 +16,7 @@ Project documentation, development report, challenges overcome and perspective f
 ---
     cd TinyLink/api/src/resources
     
-    Open file application.properties
+"Open file application.properties"
 
 
 configure your database information
