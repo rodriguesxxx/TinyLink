@@ -23,11 +23,8 @@ configure your database information
 
 ### Run Application
 ---
-    cd ..
-
-    cd java/br/com/tinylink/api
-
-    java ApiApplication.java
+#### linux:
+    /usr/bin/env /usr/lib/jvm/jdk-20/bin/java @/tmp/cp_3nkykdi4a29a85coxhnscf64m.argfile br.com.tinylink.api.ApiApplication 
 
 
 
