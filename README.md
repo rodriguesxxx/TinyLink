@@ -39,13 +39,20 @@ configure your database information
     This endpoint receives a json containing the url
 
     ```json
-        "url":"https://https://daniel-rodrigues.onrender.com/"
+    {
+        "url":"https://daniel-rodrigues.onrender.com/"
+    }
     ```
 
     return example: http://localhost:8080/123456
 
 
 # Real example of use
+
+
+https://github.com/daniel-rodrigues1089/TinyLink/assets/117450018/f2466b64-784c-4fb7-8f28-5a4e01bcb8fb
+
+
 
 
 # Beyond the code
