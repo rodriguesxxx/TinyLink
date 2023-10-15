@@ -26,6 +26,12 @@ public class ShortenerController {
     @Autowired
     ShortenerUtil shortenerUtil;
 
+    
+    @GetMapping
+    public String ping(){
+        return "pong";
+    }
+
     @GetMapping("/{code}")
     public RedirectView redirect(@PathVariable Integer code){
         RedirectView redirectView = new RedirectView();
