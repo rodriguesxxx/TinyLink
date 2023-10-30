@@ -3,6 +3,8 @@ package br.com.tinylink.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,12 +28,6 @@ public class ShortenerController {
     @Autowired
     ShortenerUtil shortenerUtil;
 
-    
-    @GetMapping
-    public String ping(){
-        return "pong";
-    }
-
     @GetMapping("/{code}")
     public RedirectView redirect(@PathVariable Integer code){
         RedirectView redirectView = new RedirectView();
@@ -46,5 +42,9 @@ public class ShortenerController {
         return shortenerUtil.shortener(entry.url);
     }
 
+    @GetMapping
+    public ResponseEntity<Object> ping(){
+        return new ResponseEntity<>("pong", HttpStatus.ACCEPTED);
+    }
 
 }
