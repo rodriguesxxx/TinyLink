@@ -8,6 +8,9 @@ Project documentation, development report, challenges overcome and perspective f
 ### Requirements
 ---
 - #### Java 20
+- #### Maven
+- #### MySql
+
 ### Clone Application
 ---
     git clone https://github.com/daniel-rodrigues1089/TinyLink
@@ -23,9 +26,10 @@ configure your database information
 
 ### Run Application
 ---
-#### linux:
-    /usr/bin/env /usr/lib/jvm/jdk-20/bin/java @/tmp/cp_3nkykdi4a29a85coxhnscf64m.argfile br.com.tinylink.api.ApiApplication 
-
+```bash
+cd ../../../
+mvn spring-boot:run
+```
 
 
 ## Endpoints
