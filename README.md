@@ -1,66 +1,62 @@
-# TinyLink
-A simple and fast link shortener api
+# TinyLink API
 
+Uma API simples e eficiente para encurtamento de URLs, desenvolvida com Java.
 
-# Docs
-Project documentation, development report, challenges overcome and perspective for the future.
+## 🚀 Tecnologias Utilizadas
 
-### Requirements
----
-- #### Java 20
-- #### Maven
-- #### MySql
+* **Java 20**
+* **Spring Boot:** Para a criação rápida da API.
+* **PostgreSQL:** Banco de dados para persistência dos links.
+* **JPA / Hibernate:** Para o mapeamento objeto-relacional com o banco de dados.
+* **Maven:** Gerenciador de dependências.
 
-### Clone Application
----
-    git clone https://github.com/daniel-rodrigues1089/TinyLink
+## ⚙️ Como Executar o Projeto
 
-### config Application Database
----
-    cd TinyLink/api/src/main/resources
-    
-"Open file application.properties"
+1.  **Pré-requisitos:**
+    * Ter o Java 20 (JDK) instalado.
+    * Ter o Git instalado.
+    * Ter o PostgreSQL instalado e rodando.
 
+2.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/evandrohenrique01/TinyLink.git](https://github.com/evandrohenrique01/TinyLink.git)
+    cd TinyLink
+    ```
 
-configure your database information
+3.  **Configure o Banco de Dados:**
+    * Crie um banco de dados vazio no seu PostgreSQL com o nome `tiny_link`.
+    * Abra o arquivo `src/main/resources/application.properties`.
+    * Altere as linhas `spring.datasource.username` e `spring.datasource.password` com o seu usuário e senha corretos do PostgreSQL.
 
-### Run Application
----
-```bash
-cd ../../../
-mvn spring-boot:run
-```
+4.  **Execute a aplicação:**
+    * Abra o projeto no VS Code.
+    * Navegue até o arquivo `ApiApplication.java` e clique no botão "Run" que aparece no editor.
+    * A API estará rodando em `http://localhost:8080`.
 
+## 📡 Como Usar a API
 
-## Endpoints
-### We have 2 endpoints:
+### 1. Encurtar uma URL
 
-- http://localhost:8080/tinylink/{code} (GET)
+Envie uma requisição **POST** para a raiz da API com a URL no corpo da requisição.
 
-    This endpoint redirects to the shortened link
-- http://localhost:8080/tinylink (POST)
-    
-    This endpoint receives a json containing the url
-
+* **Endpoint:** `POST /`
+* **Corpo (Body) da Requisição (JSON):**
     ```json
     {
-        "url":"https://daniel-rodrigues.onrender.com/"
+      "url": "[https://www.google.com/search?q=engenharia+de+computacao](https://www.google.com/search?q=engenharia+de+computacao)"
+    }
+    ```
+* **Resposta de Sucesso (Exemplo):**
+    ```json
+    {
+      "id": "b7b2a2a2",
+      "shortUrl": "http://localhost:8080/b7b2a2a2"
     }
     ```
 
-    return example: http://localhost:8080/123456
+### 2. Acessar a URL Original
 
+Basta acessar a `shortUrl` retornada no passo anterior diretamente no seu navegador.
 
-# Real example of use
-
-
-https://github.com/daniel-rodrigues1089/TinyLink/assets/117450018/f2466b64-784c-4fb7-8f28-5a4e01bcb8fb
-
-
-
-
-# Beyond the code
-
-Throughout the development, he acquires a lot of experience with spring boot, and I was able to contemplate how powerful it is.
-I intend to continue this project, creating a web interface. For ordinary users to use;
-I am very satisfied with the result and ready for new challenges.
+* **Endpoint:** `GET /{id}`
+* **Exemplo:** Acessar `http://localhost:8080/b7b2a2a2` no navegador irá te redirecionar para a URL original do Google.
