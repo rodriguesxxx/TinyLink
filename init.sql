@@ -1,0 +1,9 @@
+CREATE DATABASE tiny_link;
+
+\c tiny_link;
+
+CREATE TABLE IF NOT EXISTS t_link (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,
+    code INTEGER NOT NULL UNIQUE
+);
