@@ -5,11 +5,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Objects;
 
 @Entity
 public class Link {
     
     @Id
+    @Data()
+    @NoArgsConstructor
+    @AllArgsConstructor
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
@@ -18,55 +26,21 @@ public class Link {
 
     @Column(nullable=false, unique=true)
     private Integer code;
-    
-    public Link(){}
 
     public Link(String url, Integer code){
         this.setUrl(url);
         this.setCode(code);;
     }
-    
 
-    /**
-     * @return Integer return the id
-     */
-    public Integer getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Link link = (Link) o;
+        return Objects.equals(id, link.id) && Objects.equals(url, link.url) && Objects.equals(code, link.code);
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, url, code);
     }
-
-    /**
-     * @return String return the url
-     */
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
-     * @return Integer return the code
-     */
-    public Integer getCode() {
-        return code;
-    }
-
-    /**
-     * @param code the code to set
-     */
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
 }

@@ -16,6 +16,10 @@ public class ShortenerUtil {
     private LinkService linkService;
 
 
+    public ShortenerUtil(LinkService linkService) {
+        this.linkService = linkService;
+    }
+
     public String shortener(String url){
         try{
 

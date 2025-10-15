@@ -29,6 +29,11 @@ public class ShortenerController {
     @Autowired
     ShortenerUtil shortenerUtil;
 
+    public ShortenerController(LinkService linkService, ShortenerUtil shortenerUtil) {
+        this.linkService = linkService;
+        this.shortenerUtil = shortenerUtil;
+    }
+
     @GetMapping("/{code}")
     public RedirectView redirect(@PathVariable Integer code) {
         RedirectView redirectView = new RedirectView();

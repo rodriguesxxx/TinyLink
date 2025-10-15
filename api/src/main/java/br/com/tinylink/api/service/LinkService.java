@@ -17,6 +17,11 @@ public class LinkService {
     @Autowired
     private LinkRepository linkRepository;
 
+
+    public LinkService(LinkRepository linkRepository) {
+        this.linkRepository = linkRepository;
+    }
+
     private static final Logger logger = LoggerFactory
             .getLogger(LinkService.class);
 
