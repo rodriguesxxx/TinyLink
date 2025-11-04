@@ -2,7 +2,6 @@ package br.com.tinylink.api.controllers;
 
 import java.util.Optional;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
+ 
 
 import br.com.tinylink.api.models.Link;
 import br.com.tinylink.api.models.Entry;
@@ -33,9 +33,23 @@ public class ShortenerController {
     public RedirectView redirect(@PathVariable Integer code) {
         RedirectView redirectView = new RedirectView();
         Optional<Link> link = linkService.findLinkByCode(code);
-        redirectView.setUrl(link.get().getUrl());
+        if (link.isPresent()) {
+            redirectView.setUrl(link.get().getUrl());
+        } else {
+            // not found -> redirect to ping or home
+            redirectView.setUrl("/tinylink");
+        }
 
         return redirectView;
+    }
+
+    @GetMapping("/{code}/qr")
+    public ResponseEntity<byte[]> qr(@PathVariable Integer code) {
+        byte[] png = linkService.generateQrImage(code, 300);
+        if (png == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok().header("Content-Type", "image/png").body(png);
     }
 
     @PostMapping()
